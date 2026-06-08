@@ -1,0 +1,7 @@
+Common:
+[Airbn react style guide] https://github.com/airbnb/javascript/tree/master/react
+
+2025-09-28
+
+[Thinking in react] https://react.dev/learn/thinking-in-react
+

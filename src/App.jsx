@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// built-in package
+// component deep 0,1,2,3 alphabet
+import {
+  PrimaryButton,
+  SecondaryButton,
+} from "@/components/SOLIDPrinciple/Button";
+import UserProfileList from "@/components/SOLIDPrinciple/userProfile";
+// data
+import USERPROFILES from "@/data/SOLIDPrinciple/userProfiles.json";
+// custom package
+import logger from "@/helpers/logger";
+import Quotes from "@/services/useFetchData";
+import { Joke } from "@/services/useFetchData";
+import UncontrolledFeedbackForm from "@/components/ControlledVsUncontrolledForm/UncontrolledForm";
+import Counter from "./components/useRef/Counter";
+import AutoFocusInput from "./components/useRef/AutoFocusInput";
+import ControlledForm from "./components/ControlledVsUncontrolledForm/ControlledForm";
+
+
+//**
+// Thinking in react
+// import FilterableProductTable from '@components/ThinkingInReact/FilterableProductTable';
+// import PRODUCTS from '@data/ThinkingInReact/products.json';
+//  */
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* Thinking in react */}
+      {/* <FilterableProductTable products={PRODUCTS} /> */}
+
+      {/* SOLID principle */}
+      {/* SRP */}
+      {/* <UserProfileList users={USERPROFILES} /> */}
+
+      {/* OCP */}
+      {/* <PrimaryButton
+        onClick={() => logger.info(`[${PrimaryButton.name}] Button clicked`)}
+        children={<p>Primary buttton</p>}
+      />
+      <SecondaryButton
+        onClick={() => logger.info(`[${SecondaryButton.name}] Button clicked`)}
+        children={<h6>Secondary buttton</h6>}
+      />
+      <SecondaryButton
+        onClick={() => logger.info(`[${SecondaryButton.name}] Button clicked`)}
+        children={"Hello world"}
+      /> */}
+
+      {/* DIP */}
+      {/* <Quotes />
+      <Joke/> */}
+
+      {/* Controlled vs uncontrolled */}
+      <p>Uncontrolled form</p>
+      <UncontrolledFeedbackForm>
+      </UncontrolledFeedbackForm>
+      <p>Controlled form</p>
+      <ControlledForm></ControlledForm>
+      <Counter/>
+      <AutoFocusInput/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

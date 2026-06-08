@@ -1,0 +1,10 @@
+- Learn core react js: https://studio.firebase.google.com/reactjs-pannguyen-61701869 (contain common, learn logic, pattern, lab)
+
+- Learn react ts zustand: https://studio.firebase.google.com/reactts-pannguyen-14557259 (contain config)
+
+- build porfolio (project): https://studio.firebase.google.com/portfolio-02919721 (just for beauty html css)
+
+- Capstone prj react ts: https://studio.firebase.google.com/reactts1-59159601
+
+
+- build portfolio html css video: https://www.youtube.com/watch?v=gOrIFif1uUM
