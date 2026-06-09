@@ -12,16 +12,20 @@ import logger from "@/helpers/logger";
 import Quotes from "@/services/useFetchData";
 import { Joke } from "@/services/useFetchData";
 import UncontrolledFeedbackForm from "@/components/ControlledVsUncontrolledForm/UncontrolledForm";
-import Counter from "./components/useRef/Counter";
-import AutoFocusInput from "./components/useRef/AutoFocusInput";
-import ControlledForm from "./components/ControlledVsUncontrolledForm/ControlledForm";
-
+import Counter from "@/components/useRef/Counter";
+import AutoFocusInput from "@/components/useRef/AutoFocusInput";
+import ControlledForm from "@/components/ControlledVsUncontrolledForm/ControlledForm";
+import AxiosQuote from "@/components/Quotes";
+import AxiosJoke from "@/components/Jokes";
+import MemorizedProfileTracker from "@/components/useMemo/MemorizedProfileTracker";
+import CallbackProfileTracker from "./components/useCallback/CallbackProfileTracker";
 
 //**
 // Thinking in react
 // import FilterableProductTable from '@components/ThinkingInReact/FilterableProductTable';
 // import PRODUCTS from '@data/ThinkingInReact/products.json';
 //  */
+
 
 function App() {
   return (
@@ -51,14 +55,24 @@ function App() {
       {/* <Quotes />
       <Joke/> */}
 
+      {/* Apply base API request (Strategy pattern like and Factory pattern like) to abstract API request action */}
+      {/* <AxiosQuote/>
+      <AxiosJoke/> */}
+
       {/* Controlled vs uncontrolled */}
-      <p>Uncontrolled form</p>
+      {/* <p>Uncontrolled form</p>
       <UncontrolledFeedbackForm>
       </UncontrolledFeedbackForm>
       <p>Controlled form</p>
       <ControlledForm></ControlledForm>
       <Counter/>
-      <AutoFocusInput/>
+      <AutoFocusInput/> */}
+
+      {/* useMemo */}
+      {/* <MemorizedProfileTracker/> */}
+
+      {/* useCallback */}
+      <CallbackProfileTracker/>
     </>
   );
 }

@@ -11,7 +11,7 @@ export const messageStyle = {
   dark: "background-color: #202124; color: #fafbfb",
   light: "background-color: #fafbfb; color: #202124",
   commonStyle:
-    "border-radius: 4px;padding:4px;display:flex;justify-content:center;align-items:center;margin:4px 0px;font-weight:600;",
+    "border-radius: 2px;padding:2px 4px;display:flex;flex-direction:row;gap:2px;justify-content:center;align-items:center;margin:10px 0px;font-weight:600;",
   reset: "font-weight:600; margin-left:10px",
 };
 
@@ -81,6 +81,14 @@ export class Logger {
     // Extract relative path from /src/ onwards
     const match = caller.match(/\/src\/(.+\.[tj]sx?)/);
     return match ? match[1] : "Unknown";
+
+    //   const match = caller.match(
+    //   /\/(src\/[^?\s)]+)(?:\?[^:\s)]*)?:(\d+):(\d+)/
+    // );
+
+    // return match
+    //   ? match[0].replace(/\?.*?(?=:\d+:\d+$)/, "").replace("/src/", "")
+    //   : "Unknown";
   }
 
   log(level, ...message) {
@@ -91,7 +99,7 @@ export class Logger {
 
     this.#name = this.getCallerFile();
 
-    let msg = message.join(' ');
+    let msg = message;
 
     if (level === "error" && message instanceof Error) {
       msg = message.stack;
@@ -100,12 +108,29 @@ export class Logger {
     if (level === "table" && typeof message === "object") {
       console.table(message);
     } else {
+      msg = msg.map(i => typeof i == "object" ? JSON.stringify(i, null, 2) : i)
+      msg = Array.isArray(msg) ? msg.join(" ") : msg;
       console.log(
         `%c${level.toUpperCase()}%c ${this.#name} -%c${msg}`,
         messageStyle.commonStyle + messageStyle[level],
         messageStyle.commonStyle,
         messageStyle.commonStyle + textStyle[level]
       );
+
+      // function logStyled(segments) {
+      //   // segments format: [{ text: "Hello ", style: "color: red" }, ...]
+      //   const formatString = segments.map(s => `%c${s.text}`).join('');
+      //   const styles = segments.map(s => s.style);
+
+      //   console.log(formatString, ...styles);
+      // }
+
+      // // Usage
+      // logStyled([
+      //   { text: level.toUpperCase(), style: messageStyle.commonStyle + messageStyle[level]},
+      //   { text: this.#name, style: messageStyle.commonStyle},
+      //   { text: `\n${msg}`, style: messageStyle.commonStyle + textStyle[level]}
+      // ]);
     }
   }
 
