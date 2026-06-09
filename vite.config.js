@@ -8,11 +8,13 @@ export default defineConfig({
   plugins: [react(),  tsconfigPaths()],
   resolve: {
     alias: {
+      '@/apis': path.resolve(__dirname, 'src/apis'),
       '@/assets': path.resolve(__dirname, 'src/assets'),
       '@/components': path.resolve(__dirname, 'src/components'),
       '@/configs': path.resolve(__dirname, 'src/configs'),
       '@/data': path.resolve(__dirname, 'src/data'),
       '@/helpers': path.resolve(__dirname, 'src/helpers'),
+      '@/hooks': path.resolve(__dirname, 'src/hooks'),
       '@/pages': path.resolve(__dirname, 'src/pages'),
       '@/routes': path.resolve(__dirname, 'src/routes'),
       '@/services': path.resolve(__dirname, 'src/services'),

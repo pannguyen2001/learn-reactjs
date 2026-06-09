@@ -8,3 +8,11 @@
 
 
 - build portfolio html css video: https://www.youtube.com/watch?v=gOrIFif1uUM
+
+
+
+Stack:
+- Tanstack query: https://tanstack.com/query/latest/docs/framework/react/installation
+- Zustand: https://zustand.docs.pmnd.rs/learn/getting-started/comparison
+- Taiwind css:
+- Shadcn/UI:
