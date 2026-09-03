@@ -16,3 +16,12 @@ Stack:
 - Zustand: https://zustand.docs.pmnd.rs/learn/getting-started/comparison
 - Taiwind css:
 - Shadcn/UI:
+
+
+
+Source:
+https://github.com/tapascript/15-days-of-react-design-patterns
+- 2026-June-10: I'm watching this:
+[The Ultimate React Performance Guide (Part 1): Stop Useless Re-Renders!][tapaScript by Tapas Adhikary] https://www.youtube.com/watch?v=G8Mk6lsSOcw
+
+- [The Ultimate React Performance Guide (Part 2): Advanced Optimizations][tapaScript by Tapas Adhikary] https://www.youtube.com/watch?v=HJFDXKkz67M

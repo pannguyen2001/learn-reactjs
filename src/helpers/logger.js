@@ -35,11 +35,18 @@ export class Logger {
   #name;
   #logLevel;
   #isDebug;
+  #functionName;
 
-  constructor(name = "", level = "debug", isDebug = true) {
+  constructor(
+    name = "",
+    level = "debug",
+    isDebug = true,
+    functionName = "<anonymous>"
+  ) {
     this.#name = name;
     this.#logLevel = level;
     this.#isDebug = isDebug;
+    this.#functionName = functionName;
   }
 
   get name() {
@@ -64,6 +71,20 @@ export class Logger {
 
   set isDebug(isDebug) {
     this.#isDebug = isDebug;
+  }
+
+  getFunctionNameAndLine(stack) {
+    let functionName = "<anonymous>"
+
+    if (stack.length < 3) return functionName
+
+    let temp = stack[3]
+    if (temp.includes("(")) {
+      let tempFunc = temp.split("(")[0].trim();
+      return `${tempFunc.replace(")", "").replace("at", "").trim()}`;
+    }
+
+    return `${functionName.replace(")", "")}`;
   }
 
   getCallerFile() {
@@ -99,6 +120,9 @@ export class Logger {
 
     this.#name = this.getCallerFile();
 
+    let stack = new Error().stack.split('\n');
+    this.#functionName = this.getFunctionNameAndLine(stack)
+
     let msg = message;
 
     if (level === "error" && message instanceof Error) {
@@ -110,8 +134,9 @@ export class Logger {
     } else {
       msg = msg.map(i => typeof i == "object" ? JSON.stringify(i, null, 2) : i)
       msg = Array.isArray(msg) ? msg.join(" ") : msg;
+
       console.log(
-        `%c${level.toUpperCase()}%c ${this.#name} -%c${msg}`,
+        `%c${level.toUpperCase()}%c ${this.#name}:${this.#functionName} -%c${msg}`,
         messageStyle.commonStyle + messageStyle[level],
         messageStyle.commonStyle,
         messageStyle.commonStyle + textStyle[level]
